@@ -280,7 +280,7 @@
             <scan-classes>true</scan-classes>
             <jdk5>true</jdk5>
             <drop>true</drop>
-            <outputfilename>fotos.sql</outputfilename>
+            <outputfilename>versuch.sql</outputfilename>
             <skip>${maven.test.skip}</skip>
           </componentProperties>
         </configuration>
