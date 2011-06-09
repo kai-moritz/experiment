@@ -13,10 +13,17 @@
       <h1>
         <fmt:message key="welcome.title"/>
       </h1>
-        <p><a href="/list.html"><fmt:message key="show.all"/></a></p>
-      <p>
-		Locale = ${pageContext.response.locale}
-      </p>
+      <c:if test="${!empty selection}">
+        <h2>Ausgewählt: ${selection}</h2>
+        <ul>
+          <c:forEach var="picture" items="${selection.pictures}"><li>${picture}</li></c:forEach>
+        </ul>
+        <a href="?clone=${selection.id}">Clone!</a>
+      </c:if>
+      <h2>Alle</h2>
+      <ul>
+        <c:forEach var="selection" items="${selections}"><li><a href="?show=${selection.id}">${selection}</a></li></c:forEach>
+      </ul>
       <hr>
       <ul>
         <li> <a href="?locale=en_us">us</a> |  <a href="?locale=en_gb">gb</a> | <a href="?locale=es_es">es</a> | <a href="?locale=de_de">de</a> </li>
