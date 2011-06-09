@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <table name="pictures">
+    <column>id</column>
+    <column>created</column>
+    <column>filename</column>
+    <column>height</column>
+    <column>md5</column>
+    <column>mimeType</column>
+    <column>modified</column>
+    <column>suffix</column>
+    <column>version</column>
+    <column>width</column>
+    <row>
+      <value>1</value>
+      <value><![CDATA[2010-05-07 00:00:00.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7233.JPG</value>
+      <value>1944</value>
+      <value>c1841549d41b137f7b69a82876083a0d</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-07 19:55:30.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>2592</value>
+    </row>
+    <row>
+      <value>2</value>
+      <value><![CDATA[2010-05-07 20:21:13.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7241.JPG</value>
+      <value>1944</value>
+      <value>4c8c732dcce49161b19cc3b25705df88</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-07 20:21:13.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>2592</value>
+    </row>
+    <row>
+      <value>3</value>
+      <value><![CDATA[2010-05-29 11:08:53.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7349.JPG</value>
+      <value>3000</value>
+      <value>3646ce460f8b2b77e623fd315b2b62ca</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-29 11:08:53.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>4000</value>
+    </row>
+    <row>
+      <value>4</value>
+      <value><![CDATA[2010-05-29 12:04:20.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7352.JPG</value>
+      <value>3000</value>
+      <value>45a6f6c0094dc58e957c154ba8ce6532</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-29 12:04:20.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>4000</value>
+    </row>
+    <row>
+      <value>5</value>
+      <value><![CDATA[2010-05-07 20:04:47.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7235.JPG</value>
+      <value>1944</value>
+      <value>143496c278722f44ad5ffb7e72798d56</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-07 20:04:47.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>2592</value>
+    </row>
+    <row>
+      <value>6</value>
+      <value><![CDATA[2010-05-29 00:00:00.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7347.JPG</value>
+      <value>3000</value>
+      <value>6b275e11d4f0776eef44b3af5be151cf</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-29 11:06:28.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>4000</value>
+    </row>
+    <row>
+      <value>7</value>
+      <value><![CDATA[2010-05-07 23:59:59.999]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7237.JPG</value>
+      <value>1944</value>
+      <value>bcebe01d9b4dca694056eecb40b1f318</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-07 20:05:31.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>2592</value>
+    </row>
+    <row>
+      <value>8</value>
+      <value><![CDATA[2010-05-07 19:49:19.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7227.JPG</value>
+      <value>1944</value>
+      <value>c8c4c67564de85454c8df902689936fe</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-07 19:49:19.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>2592</value>
+    </row>
+    <row>
+      <value>9</value>
+      <value><![CDATA[2010-05-07 19:54:36.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7231.JPG</value>
+      <value>1944</value>
+      <value>0c97c25041d461ea5b7f4cffdda1314e</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-07 19:54:36.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>2592</value>
+    </row>
+    <row>
+      <value>10</value>
+      <value><![CDATA[2010-05-07 19:50:02.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7228.JPG</value>
+      <value>1944</value>
+      <value>73bda76c493a3b94d2d7389567c82291</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-07 19:50:02.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>2592</value>
+    </row>
+    <row>
+      <value>11</value>
+      <value><![CDATA[2010-05-07 19:52:11.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7230.JPG</value>
+      <value>1944</value>
+      <value>d751ab2b52f01bbf57a24c53ebd1fa9f</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-07 19:52:11.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>2592</value>
+    </row>
+    <row>
+      <value>12</value>
+      <value><![CDATA[2010-05-07 19:50:37.0]]></value>
+      <value>/home/kai/Desktop/fotos/DSCN7229.JPG</value>
+      <value>1944</value>
+      <value>2658bee30a27da8b97f7827aab3009ac</value>
+      <value>image/jpeg</value>
+      <value><![CDATA[2010-05-07 19:50:37.0]]></value>
+      <value>jpeg</value>
+      <value>1</value>
+      <value>2592</value>
+    </row>
+  </table>
+  <table name="selections">
+    <column>type</column>
+    <column>id</column>
+    <column>name</column>
+    <row>
+      <value>s</value>
+      <value>1</value>
+      <value>Vorgegeben</value>
+    </row>
+  </table>
+  <table name="selections_pictures">
+    <column>selections_id</column>
+    <column>pictures_id</column>
+    <row>
+      <value>1</value>
+      <value>1</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>2</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>3</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>4</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>5</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>6</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>7</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>8</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>9</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>10</value>
+    </row>
+    <row>
+      <value>1</value>
+      <value>11</value>
+    </row>
+  </table>
+</dataset>

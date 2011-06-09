@@ -284,6 +284,14 @@
             <skip>${maven.test.skip}</skip>
           </componentProperties>
         </configuration>
+        <executions>
+          <execution>
+            <phase>process-test-resources</phase>
+            <goals>
+              <goal>hbm2ddl</goal>
+            </goals>
+          </execution>
+        </executions>
         <dependencies>
           <dependency>
             <groupId>${jdbc.groupId}</groupId>
@@ -354,7 +362,50 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>dbunit-maven-plugin</artifactId>
+        <configuration>
+          <driver>${jdbc.driverClassName}</driver>
+          <username>${jdbc.username}</username>
+          <password>${jdbc.password}</password>
+          <url>${jdbc.url}</url>
+          <src>src/test/resources/sample-data.xml</src>
+          <type>CLEAN_INSERT</type>
+          <skip>${maven.test.skip}</skip>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>operation</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>${jdbc.groupId}</groupId>
+            <artifactId>${jdbc.artifactId}</artifactId>
+            <version>${jdbc.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
     </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>spring/resources.xml</include>
+        </includes>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+        <filtering>true</filtering>
+      </testResource>
+    </testResources>
   </build>
 
 </project>
