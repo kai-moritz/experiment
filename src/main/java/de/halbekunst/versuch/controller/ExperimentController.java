@@ -1,8 +1,9 @@
 package de.halbekunst.versuch.controller;
 
-import de.halbekunst.versuch.dao.SelectionDao;
-import de.halbekunst.versuch.model.SavedSelection;
-import de.halbekunst.versuch.model.Selection;
+import de.halbekunst.fotos.dao.SelectionDao;
+import de.halbekunst.fotos.model.SavedSelection;
+import de.halbekunst.fotos.model.Selection;
+import de.halbekunst.fotos.service.UserService;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.annotation.Resource;
@@ -25,6 +26,7 @@ public class ExperimentController {
   private final static Logger log = LoggerFactory.getLogger(ExperimentController.class);
 
   @Resource SelectionDao dao;
+  @Resource UserService service;
 
 
 
@@ -36,7 +38,7 @@ public class ExperimentController {
 
     if (clone != null) {
       Selection selection = dao.get(clone);
-      SavedSelection saved = new SavedSelection();
+      SavedSelection saved = new SavedSelection(service.loadUserByUsername("user"));
       saved.setName("Kopie von " + selection.toString());
       saved.setPictures(new ArrayList(selection.getPictures()));
       dao.save(saved);
@@ -47,7 +49,7 @@ public class ExperimentController {
       mav.addObject("selection", dao.get(show));
     }
 
-    mav.addObject("selections", dao.list());
+    mav.addObject("selections", dao.list(service.loadUserByUsername("user")));
     return mav;
   }
 }
