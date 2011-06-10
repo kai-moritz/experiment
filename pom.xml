@@ -76,6 +76,11 @@
       <artifactId>fotos-core</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>de.halbekunst</groupId>
+      <artifactId>utils-cachecontrol</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
 
     <!--  Spring -->
     <dependency>
@@ -402,8 +407,15 @@
         <directory>src/main/resources</directory>
         <filtering>true</filtering>
         <includes>
-          <include>spring/resources.xml</include>
+          <include>fotos.properties</include>
         </includes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+        <excludes>
+          <exclude>fotos.properties</exclude>
+        </excludes>
       </resource>
     </resources>
     <testResources>

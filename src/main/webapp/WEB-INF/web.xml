@@ -7,7 +7,9 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
+      classpath:/spring/config.xml
       classpath:/spring/resources.xml
+      classpath:/spring/core.xml
       classpath:/spring/in-memory.xml
       /WEB-INF/spring/mvc.xml
     </param-value>
