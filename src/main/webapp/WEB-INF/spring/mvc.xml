@@ -17,7 +17,7 @@
   <context:spring-configured/>
 
   <!-- Scans the classpath of this application for @Components to deploy as beans -->
-  <context:component-scan base-package="de.halbekunst" />
+  <context:component-scan base-package="de.halbekunst.versuch" />
 
   <!-- Application Message Bundle -->
   <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">

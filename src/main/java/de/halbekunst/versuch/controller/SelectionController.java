@@ -1,12 +1,10 @@
 package de.halbekunst.versuch.controller;
 
-import de.halbekunst.fotos.dao.SelectionDao;
-import de.halbekunst.fotos.model.Picture;
-import de.halbekunst.fotos.model.SavedSelection;
-import de.halbekunst.fotos.model.Selection;
-import de.halbekunst.fotos.model.User;
-import de.halbekunst.fotos.service.PictureService;
-import de.halbekunst.fotos.service.UserService;
+import de.halbekunst.versuch.dao.PictureDao;
+import de.halbekunst.versuch.dao.SelectionDao;
+import de.halbekunst.versuch.model.Picture;
+import de.halbekunst.versuch.model.SavedSelection;
+import de.halbekunst.versuch.model.Selection;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,10 +34,9 @@ public class SelectionController {
   public final String COOKIE_PATH = "/selection/";
   public final String COOKIE_NAME = "selection";
   public final int COOKIE_MAX_AGE = Integer.MAX_VALUE;
-  public final String VIEW = "TILES/selection";
+  public final String VIEW = "selection";
 
-  @Autowired PictureService pictureService;
-  @Autowired UserService userService;
+  @Autowired PictureDao pictureDao;
   @Autowired SelectionDao selectionDao;
 
 
@@ -99,7 +96,7 @@ public class SelectionController {
   ModelAndView moveUp(HttpServletRequest request, HttpServletResponse response, @RequestParam(required=true) Long id) {
     CookieBackedSelection selection = new CookieBackedSelection(request.getCookies());
     List<Picture> pictures = selection.getPictures();
-    Picture picture = pictureService.get(id);
+    Picture picture = pictureDao.get(id);
     int pos = pictures.indexOf(picture);
     if (pos+1 < pictures.size()) {
       pictures.remove(pos);
@@ -116,7 +113,7 @@ public class SelectionController {
   ModelAndView moveDown(HttpServletRequest request, HttpServletResponse response, @RequestParam(required=true) Long id) {
     CookieBackedSelection selection = new CookieBackedSelection(request.getCookies());
     List<Picture> pictures = selection.getPictures();
-    Picture picture = pictureService.get(id);
+    Picture picture = pictureDao.get(id);
     int pos = pictures.indexOf(picture);
     if (pos > 0) {
       pictures.remove(pos);
@@ -143,7 +140,7 @@ public class SelectionController {
       cookie.setMaxAge(COOKIE_MAX_AGE);
       name = "Kopie von " + original.toString();
       if (true) {
-        selection = new SavedSelection(userService.loadUserByUsername("user"));
+        selection = new SavedSelection();
         selection.setName(name);
         selection.getPictures().addAll(original.getPictures());
         pictures = selection.getPictures();
@@ -161,7 +158,7 @@ public class SelectionController {
               cookie = received;
               cookie.setPath(COOKIE_PATH);
               String value = cookie.getValue();
-              if (value.charAt(0) == '-') {
+              if (false) {
                 name = "Gemerkte Bilder";
                 pictures = new LinkedList<Picture>();
                 int start = 1;
@@ -177,13 +174,7 @@ public class SelectionController {
               }
               else {
                 try {
-                  User user = userService.loadUserByUsername("user");
                   selection = (SavedSelection) selectionDao.get(Long.parseLong(value));
-                  if (!user.equals(selection.getUser())) {
-                    log.error("Die Auswahl \"{}\" gehört nicht dem Benutzer {}", selection.getId(), user.getUsername());
-                    selection = null;
-                    break;
-                  }
                   name = selection.getName();
                   pictures = selection.getPictures();
                   return;
@@ -204,7 +195,7 @@ public class SelectionController {
 
       if (true) {
         name = "Unbenannt";
-        selection = new SavedSelection(userService.loadUserByUsername("user"));
+        selection = new SavedSelection();
         selection.setName(name);
         pictures = selection.getPictures();
       }
@@ -238,7 +229,7 @@ public class SelectionController {
     }
 
     public final void addPicture(Long id) {
-      Picture picture = pictureService.get(id);
+      Picture picture = pictureDao.get(id);
       if (picture == null)
         return;
       if (pictures.contains(picture))
@@ -247,7 +238,7 @@ public class SelectionController {
     }
 
     public void removePicture(Long id) {
-      pictures.remove(pictureService.get(id));
+      pictures.remove(pictureDao.get(id));
     }
 
     public Cookie toCookie() {

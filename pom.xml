@@ -71,17 +71,6 @@
 
   <dependencies>
 
-    <dependency>
-      <groupId>de.halbekunst</groupId>
-      <artifactId>fotos-core</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>de.halbekunst</groupId>
-      <artifactId>utils-cachecontrol</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-
     <!--  Spring -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -110,7 +99,6 @@
           <artifactId>commons-logging</artifactId>
         </exclusion>
       </exclusions>
-      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -288,9 +276,9 @@
             </component>
           </components>
           <componentProperties>
+            <scan-classes>true</scan-classes>
             <jdk5>true</jdk5>
             <drop>true</drop>
-            <configurationfile>src/test/resources/hibernate.cfg.xml</configurationfile>
             <outputfilename>versuch.sql</outputfilename>
             <skip>${maven.test.skip}</skip>
           </componentProperties>
