@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ExperimentController {
   private final static Logger log = LoggerFactory.getLogger(ExperimentController.class);
 
-  @Autowired SelectionDao dao;
+  @Autowired SelectionDao selectionDao;
 
 
 
@@ -35,19 +35,19 @@ public class ExperimentController {
     ModelAndView mav = new ModelAndView("experiment");
 
     if (clone != null) {
-      Selection selection = dao.get(clone);
+      Selection selection = selectionDao.get(clone);
       SavedSelection saved = new SavedSelection();
       saved.setName("Kopie von " + selection.toString());
-      saved.setPictures(new ArrayList(selection.getPictures()));
-      dao.save(saved);
+      saved.getPictures().addAll(selection.getPictures());
+      selectionDao.save(saved);
       mav.addObject("selection", saved);
     }
 
     if (show != null) {
-      mav.addObject("selection", dao.get(show));
+      mav.addObject("selection", selectionDao.get(show));
     }
 
-    mav.addObject("selections", dao.list());
+    mav.addObject("selections", selectionDao.list());
     return mav;
   }
 }
