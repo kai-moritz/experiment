@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
  * @author kai
  */
 @Controller
-@Transactional
 public class ExperimentController {
   private final static Logger log = LoggerFactory.getLogger(ExperimentController.class);
 
@@ -38,8 +37,8 @@ public class ExperimentController {
       Selection selection = selectionDao.get(clone);
       SavedSelection saved = new SavedSelection();
       saved.setName("Kopie von " + selection.toString());
-      saved.getPictures().addAll(selection.getPictures());
       selectionDao.save(saved);
+      saved.getPictures().addAll(selection.getPictures());
       mav.addObject("selection", saved);
     }
 

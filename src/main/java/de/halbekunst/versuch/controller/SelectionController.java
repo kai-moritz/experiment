@@ -33,7 +33,7 @@ public class SelectionController {
   @Autowired SelectionDao selectionDao;
 
 
-  @Transactional(readOnly=true)
+  @Transactional
   @RequestMapping("/selection/show.html")
   ModelAndView show(HttpServletRequest request, HttpServletResponse response) {
     Cookie[] cookies = request.getCookies();
@@ -59,7 +59,7 @@ public class SelectionController {
     return mav;
   }
 
-  @Transactional(readOnly=false)
+  @Transactional
   @RequestMapping("/selection/add.html")
   ModelAndView addPicture(HttpServletRequest request, HttpServletResponse response, @RequestParam Long id) {
     Cookie[] cookies = request.getCookies();
