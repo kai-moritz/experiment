@@ -30,7 +30,7 @@ public class ExperimentController {
 
 
   @RequestMapping("/experiment.html")
-  @Transactional(readOnly=true)
+  @Transactional
   public ModelAndView handle(HttpServletResponse response, @RequestParam(required=false) Long clone, @RequestParam(required=false) Long show) throws IOException {
     ModelAndView mav = new ModelAndView("experiment");
 

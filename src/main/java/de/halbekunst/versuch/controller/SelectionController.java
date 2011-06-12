@@ -40,7 +40,7 @@ public class SelectionController {
   @Autowired SelectionDao selectionDao;
 
 
-  @Transactional
+  @Transactional(readOnly=false)
   @RequestMapping("/selection/clone.html")
   ModelAndView clone(HttpServletRequest request, HttpServletResponse response, @RequestParam Long id) {
     ModelAndView mav = new ModelAndView(VIEW);
@@ -58,7 +58,7 @@ public class SelectionController {
     return mav;
   }
 
-  @Transactional
+  @Transactional(readOnly=false)
   @RequestMapping("/selection/sort.html")
   ModelAndView sort(HttpServletRequest request, HttpServletResponse response) {
     CookieBackedSelection selection = new CookieBackedSelection(request.getCookies());
@@ -69,7 +69,7 @@ public class SelectionController {
     return mav;
   }
 
-  @Transactional
+  @Transactional(readOnly=false)
   @RequestMapping("/selection/add.html")
   ModelAndView addPicture(HttpServletRequest request, HttpServletResponse response, @RequestParam Long id) {
     CookieBackedSelection selection = new CookieBackedSelection(request.getCookies());
@@ -80,7 +80,7 @@ public class SelectionController {
     return mav;
   }
 
-  @Transactional
+  @Transactional(readOnly=false)
   @RequestMapping("/selection/remove.html")
   ModelAndView removePicture(HttpServletRequest request, HttpServletResponse response, @RequestParam Long id) {
     CookieBackedSelection selection = new CookieBackedSelection(request.getCookies());
@@ -91,7 +91,7 @@ public class SelectionController {
     return mav;
   }
 
-  @Transactional
+  @Transactional(readOnly=false)
   @RequestMapping("/selection/move/up.html")
   ModelAndView moveUp(HttpServletRequest request, HttpServletResponse response, @RequestParam(required=true) Long id) {
     CookieBackedSelection selection = new CookieBackedSelection(request.getCookies());
@@ -108,7 +108,7 @@ public class SelectionController {
     return mav;
   }
 
-  @Transactional
+  @Transactional(readOnly=false)
   @RequestMapping("/selection/move/down.html")
   ModelAndView moveDown(HttpServletRequest request, HttpServletResponse response, @RequestParam(required=true) Long id) {
     CookieBackedSelection selection = new CookieBackedSelection(request.getCookies());
