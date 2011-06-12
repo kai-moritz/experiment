@@ -4,9 +4,11 @@ import de.halbekunst.versuch.dao.SelectionDao;
 import de.halbekunst.versuch.model.AbstractSelection;
 import de.halbekunst.versuch.model.SavedSelection;
 import java.util.List;
-import javax.annotation.Resource;
+import javax.annotation.PostConstruct;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -15,8 +17,14 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 @Lazy(true)
-public class HibernateSelectionDao implements SelectionDao {
-  @Resource SessionFactory sessionFactory;
+public class HibernateSelectionDao extends HibernateDaoSupport implements SelectionDao {
+  @Autowired SessionFactory sessionFactory;
+
+
+  @PostConstruct
+  public void init() {
+    this.setHibernateTemplate(this.createHibernateTemplate(sessionFactory));
+  }
 
 
   @Override
