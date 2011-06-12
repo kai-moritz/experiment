@@ -27,17 +27,17 @@ public class HibernatePictureDao extends HibernateDaoSupport implements PictureD
 
   @Override
   public void save(Picture picture) {
-    sessionFactory.getCurrentSession().saveOrUpdate(picture);
+    this.getHibernateTemplate().saveOrUpdate(picture);
   }
 
   @Override
   public Picture get(Long id) {
-    return (Picture)sessionFactory.getCurrentSession().get(Picture.class, id);
+    return (Picture)this.getHibernateTemplate().get(Picture.class, id);
   }
 
   @Override
   public void remove(Picture picture) {
-    sessionFactory.getCurrentSession().delete(picture);
+    this.getHibernateTemplate().delete(picture);
   }
 
   @Override

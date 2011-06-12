@@ -29,17 +29,17 @@ public class HibernateSelectionDao extends HibernateDaoSupport implements Select
 
   @Override
   public void save(AbstractSelection selection) {
-    sessionFactory.getCurrentSession().saveOrUpdate(selection);
+    this.getHibernateTemplate().saveOrUpdate(selection);
   }
 
   @Override
   public AbstractSelection get(Long id) {
-    return (AbstractSelection) sessionFactory.getCurrentSession().get(AbstractSelection.class, id);
+    return (AbstractSelection) this.getHibernateTemplate().get(AbstractSelection.class, id);
   }
 
   @Override
   public void remove(AbstractSelection selection) {
-    sessionFactory.getCurrentSession().delete(selection);
+    this.getHibernateTemplate().delete(selection);
   }
 
   @Override
