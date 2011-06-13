@@ -17,33 +17,64 @@
   <context:spring-configured/>
 
   <!-- Scans the classpath of this application for @Components to deploy as beans -->
-  <context:component-scan base-package="de.halbekunst.versuch" />
-
-  <!-- Application Message Bundle -->
-  <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-    <property name="basename" value="/WEB-INF/messages/messages" />
-    <property name="cacheSeconds" value="0" />
-  </bean>
+  <context:component-scan base-package="de.halbekunst.experiment" />
 
   <!-- Configures the @Controller programming model -->
   <mvc:annotation-driven />
-
-  <!-- Forwards requests to the "/" resource to the "welcome" view -->
-  <mvc:view-controller path="/" view-name="welcome"/>
-
-  <!-- Configures Handler Interceptors -->
-  <mvc:interceptors>
-    <!-- Changes the locale when a 'locale' request parameter is sent; e.g. /?locale=de -->
-    <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-  </mvc:interceptors>
-
-  <!-- Saves a locale change using a cookie -->
-  <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
 
   <!-- Resolves view names to protected .jsp resources within the /WEB-INF/views directory -->
   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     <property name="prefix" value="/WEB-INF/views/"/>
     <property name="suffix" value=".jsp"/>
+  </bean>
+
+  <!-- Anwendungs-Parameter über Java-Systemproperties auflösen -->
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+      <list>
+        <value>classpath:experiment.properties</value>
+      </list>
+    </property>
+    <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+  </bean>
+
+
+  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+    <property name="driverClass" value="${jdbc.driverClassName}"/>
+    <property name="jdbcUrl">
+      <value><![CDATA[${jdbc.url}]]></value>
+    </property>
+    <property name="user" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
+    <property name="minPoolSize" value="3"/>
+    <property name="maxPoolSize" value="30"/>
+    <property name="acquireIncrement" value="3"/>
+    <property name="maxIdleTime" value="25200"/>
+    <property name="maxIdleTimeExcessConnections" value="14400"/>
+    <property name="idleConnectionTestPeriod" value="7200"/>
+    <property name="maxStatements" value="50"/>
+    <property name="preferredTestQuery" value="SELECT 1;"/>
+  </bean>
+
+  <!-- Hibernate SessionFactory -->
+  <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="packagesToScan" value="de.halbekunst.experiment"/>
+    <property name="hibernateProperties">
+      <value>
+        hibernate.dialect=${hibernate.dialect}
+        hibernate.query.substitutions=true 'Y', false 'N'
+        hibernate.cache.use_second_level_cache=false
+        hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+      </value>
+      <!-- Turn batching off for better error messages under PostgreSQL -->
+      <!-- hibernate.jdbc.batch_size=0 -->
+    </property>
+  </bean>
+
+  <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+  <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory"/>
   </bean>
 
 </beans>

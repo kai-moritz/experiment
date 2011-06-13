@@ -1,4 +1,4 @@
-package de.halbekunst.versuch.model;
+package de.halbekunst.experiment.model;
 
 import java.io.Serializable;
 import java.util.Date;

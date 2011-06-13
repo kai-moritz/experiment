@@ -157,13 +157,11 @@
     </row>
   </table>
   <table name="selections">
-    <column>type</column>
     <column>id</column>
     <column>name</column>
     <row>
-      <value>s</value>
       <value>1</value>
-      <value>Vorgegeben</value>
+      <value>Some selected pictures</value>
     </row>
   </table>
   <table name="selections_pictures">

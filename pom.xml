@@ -395,14 +395,14 @@
         <directory>src/main/resources</directory>
         <filtering>true</filtering>
         <includes>
-          <include>fotos.properties</include>
+          <include>experiment.properties</include>
         </includes>
       </resource>
       <resource>
         <directory>src/main/resources</directory>
         <filtering>false</filtering>
         <excludes>
-          <exclude>fotos.properties</exclude>
+          <exclude>experiment.properties</exclude>
         </excludes>
       </resource>
     </resources>
