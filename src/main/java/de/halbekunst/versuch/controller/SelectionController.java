@@ -28,7 +28,7 @@ public class SelectionController {
 
   @RequestMapping("/selection/add.html")
   @Transactional
-  ModelAndView addPicture(HttpServletResponse response, @RequestParam Long id) {
+  public ModelAndView addPicture(HttpServletResponse response, @RequestParam Long id) {
     ModelAndView mav = new ModelAndView(VIEW);
     if (id != null) {
       Selection selection = selectionDao.get(id);
